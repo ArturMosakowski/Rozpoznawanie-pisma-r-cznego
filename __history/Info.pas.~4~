@@ -1,0 +1,61 @@
+unit Info;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls;
+
+type
+  TForm6 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Image1: TImage;
+    Image2: TImage;
+    procedure FormCreate(Sender: TObject);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm6.FormCreate(Sender: TObject);
+begin
+  Form6.Image1.Width:=293;
+  Form6.Image1.Height:=384;
+  Form6.Image1.Picture.LoadFromFile('Grafiki/tlo.bmp');
+  Form6.Image2.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Up.bmp');
+end;
+
+procedure TForm6.Image2MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Form6.Image2.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Down.bmp');
+end;
+
+procedure TForm6.Image2MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Form6.Image2.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Up.bmp');
+end;
+
+end.

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2009-11-15 14:34:08.609.pas,G:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit3.pas=G:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Podglad_wzorcow.pas</Transaction>
+    <Transaction>2009-11-15 14:34:08.609.dfm,G:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit3.dfm=G:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Podglad_wzorcow.dfm</Transaction>
+    <Transaction>2009-11-21 16:34:04.787.pas,D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit4.pas=D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Statystyka.pas</Transaction>
+    <Transaction>2009-11-21 16:34:04.787.dfm,D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit4.dfm=D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Statystyka.dfm</Transaction>
+    <Transaction>2009-11-22 22:16:14.799.pas,D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit5.pas=D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Ustawienia.pas</Transaction>
+    <Transaction>2009-11-22 22:16:14.799.dfm,D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit5.dfm=D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Ustawienia.dfm</Transaction>
+    <Transaction>2009-12-15 17:40:11.504.pas,D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit6.pas=D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Info.pas</Transaction>
+    <Transaction>2009-12-15 17:40:11.514.dfm,D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Unit6.dfm=D:\Ważne\Praca inżynierska\Rozpoznawanie - wzorce+antywzorce\Info.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

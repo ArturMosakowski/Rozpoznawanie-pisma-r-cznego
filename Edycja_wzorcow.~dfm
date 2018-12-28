@@ -1,0 +1,690 @@
+object Form2: TForm2
+  Left = 483
+  Top = 597
+  AlphaBlendValue = 150
+  BorderStyle = bsNone
+  Caption = 'Form2'
+  ClientHeight = 318
+  ClientWidth = 1053
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Visible = True
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image71: TImage
+    Left = 22
+    Top = 16
+    Width = 401
+    Height = 131
+  end
+  object Image1: TImage
+    Left = 432
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image2: TImage
+    Left = 480
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image3: TImage
+    Left = 528
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image4: TImage
+    Left = 576
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image5: TImage
+    Left = 624
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image6: TImage
+    Left = 672
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image7: TImage
+    Left = 720
+    Top = 16
+    Width = 45
+    Height = 45
+  end
+  object Image8: TImage
+    Left = 432
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image9: TImage
+    Left = 480
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image10: TImage
+    Left = 528
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image11: TImage
+    Left = 576
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image12: TImage
+    Left = 624
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image13: TImage
+    Left = 672
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image14: TImage
+    Left = 720
+    Top = 64
+    Width = 45
+    Height = 45
+  end
+  object Image15: TImage
+    Left = 432
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image16: TImage
+    Left = 480
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image17: TImage
+    Left = 528
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image18: TImage
+    Left = 576
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image19: TImage
+    Left = 624
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image20: TImage
+    Left = 672
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image21: TImage
+    Left = 720
+    Top = 112
+    Width = 45
+    Height = 45
+  end
+  object Image22: TImage
+    Left = 432
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image23: TImage
+    Left = 480
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image24: TImage
+    Left = 528
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image25: TImage
+    Left = 576
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image26: TImage
+    Left = 624
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image27: TImage
+    Left = 672
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image28: TImage
+    Left = 720
+    Top = 160
+    Width = 45
+    Height = 45
+  end
+  object Image29: TImage
+    Left = 432
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image30: TImage
+    Left = 480
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image31: TImage
+    Left = 528
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image32: TImage
+    Left = 576
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image33: TImage
+    Left = 624
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image34: TImage
+    Left = 672
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image35: TImage
+    Left = 720
+    Top = 208
+    Width = 45
+    Height = 45
+  end
+  object Image36: TImage
+    Left = 768
+    Top = 16
+    Width = 51
+    Height = 21
+    OnClick = Image36Click
+    OnMouseDown = Image36MouseDown
+    OnMouseUp = Image36MouseUp
+  end
+  object Image37: TImage
+    Left = 824
+    Top = 16
+    Width = 51
+    Height = 21
+    OnClick = Image37Click
+    OnMouseDown = Image37MouseDown
+    OnMouseUp = Image37MouseUp
+  end
+  object Image38: TImage
+    Left = 880
+    Top = 16
+    Width = 51
+    Height = 21
+    OnClick = Image38Click
+    OnMouseDown = Image38MouseDown
+    OnMouseUp = Image38MouseUp
+  end
+  object Image39: TImage
+    Left = 936
+    Top = 16
+    Width = 51
+    Height = 21
+    OnClick = Image39Click
+    OnMouseDown = Image39MouseDown
+    OnMouseUp = Image39MouseUp
+  end
+  object Image40: TImage
+    Left = 992
+    Top = 16
+    Width = 51
+    Height = 21
+    OnClick = Image40Click
+    OnMouseDown = Image40MouseDown
+    OnMouseUp = Image40MouseUp
+  end
+  object Image41: TImage
+    Left = 768
+    Top = 40
+    Width = 51
+    Height = 21
+    OnClick = Image41Click
+    OnMouseDown = Image41MouseDown
+    OnMouseUp = Image41MouseUp
+  end
+  object Image42: TImage
+    Left = 824
+    Top = 40
+    Width = 51
+    Height = 21
+    OnClick = Image42Click
+    OnMouseDown = Image42MouseDown
+    OnMouseUp = Image42MouseUp
+  end
+  object Image43: TImage
+    Left = 880
+    Top = 40
+    Width = 51
+    Height = 21
+    OnClick = Image43Click
+    OnMouseDown = Image43MouseDown
+    OnMouseUp = Image43MouseUp
+  end
+  object Image44: TImage
+    Left = 936
+    Top = 40
+    Width = 51
+    Height = 21
+    OnClick = Image44Click
+    OnMouseDown = Image44MouseDown
+    OnMouseUp = Image44MouseUp
+  end
+  object Image45: TImage
+    Left = 992
+    Top = 40
+    Width = 51
+    Height = 21
+    OnClick = Image45Click
+    OnMouseDown = Image45MouseDown
+    OnMouseUp = Image45MouseUp
+  end
+  object Image46: TImage
+    Left = 768
+    Top = 64
+    Width = 51
+    Height = 21
+    OnClick = Image46Click
+    OnMouseDown = Image46MouseDown
+    OnMouseUp = Image46MouseUp
+  end
+  object Image47: TImage
+    Left = 824
+    Top = 64
+    Width = 51
+    Height = 21
+    OnClick = Image47Click
+    OnMouseDown = Image47MouseDown
+    OnMouseUp = Image47MouseUp
+  end
+  object Image48: TImage
+    Left = 880
+    Top = 64
+    Width = 51
+    Height = 21
+    OnClick = Image48Click
+    OnMouseDown = Image48MouseDown
+    OnMouseUp = Image48MouseUp
+  end
+  object Image49: TImage
+    Left = 936
+    Top = 64
+    Width = 51
+    Height = 21
+    OnClick = Image49Click
+    OnMouseDown = Image49MouseDown
+    OnMouseUp = Image49MouseUp
+  end
+  object Image50: TImage
+    Left = 992
+    Top = 64
+    Width = 51
+    Height = 21
+    OnClick = Image50Click
+    OnMouseDown = Image50MouseDown
+    OnMouseUp = Image50MouseUp
+  end
+  object Image51: TImage
+    Left = 768
+    Top = 88
+    Width = 51
+    Height = 21
+    OnClick = Image51Click
+    OnMouseDown = Image51MouseDown
+    OnMouseUp = Image51MouseUp
+  end
+  object Image52: TImage
+    Left = 824
+    Top = 88
+    Width = 51
+    Height = 21
+    OnClick = Image52Click
+    OnMouseDown = Image52MouseDown
+    OnMouseUp = Image52MouseUp
+  end
+  object Image53: TImage
+    Left = 880
+    Top = 88
+    Width = 51
+    Height = 21
+    OnClick = Image53Click
+    OnMouseDown = Image53MouseDown
+    OnMouseUp = Image53MouseUp
+  end
+  object Image54: TImage
+    Left = 936
+    Top = 88
+    Width = 51
+    Height = 21
+    OnClick = Image54Click
+    OnMouseDown = Image54MouseDown
+    OnMouseUp = Image54MouseUp
+  end
+  object Image55: TImage
+    Left = 992
+    Top = 88
+    Width = 51
+    Height = 21
+    OnClick = Image55Click
+    OnMouseDown = Image55MouseDown
+    OnMouseUp = Image55MouseUp
+  end
+  object Image56: TImage
+    Left = 768
+    Top = 112
+    Width = 51
+    Height = 21
+    OnClick = Image56Click
+    OnMouseDown = Image56MouseDown
+    OnMouseUp = Image56MouseUp
+  end
+  object Image57: TImage
+    Left = 824
+    Top = 112
+    Width = 51
+    Height = 21
+    OnClick = Image57Click
+    OnMouseDown = Image57MouseDown
+    OnMouseUp = Image57MouseUp
+  end
+  object Image58: TImage
+    Left = 880
+    Top = 112
+    Width = 51
+    Height = 21
+    OnClick = Image58Click
+    OnMouseDown = Image58MouseDown
+    OnMouseUp = Image58MouseUp
+  end
+  object Image59: TImage
+    Left = 936
+    Top = 112
+    Width = 51
+    Height = 21
+    OnClick = Image59Click
+    OnMouseDown = Image59MouseDown
+    OnMouseUp = Image59MouseUp
+  end
+  object Image60: TImage
+    Left = 992
+    Top = 112
+    Width = 51
+    Height = 21
+    OnClick = Image60Click
+    OnMouseDown = Image60MouseDown
+    OnMouseUp = Image60MouseUp
+  end
+  object Image61: TImage
+    Left = 768
+    Top = 136
+    Width = 51
+    Height = 21
+    OnClick = Image61Click
+    OnMouseDown = Image61MouseDown
+    OnMouseUp = Image61MouseUp
+  end
+  object Image62: TImage
+    Left = 824
+    Top = 136
+    Width = 51
+    Height = 21
+    OnClick = Image62Click
+    OnMouseDown = Image62MouseDown
+    OnMouseUp = Image62MouseUp
+  end
+  object Image63: TImage
+    Left = 880
+    Top = 136
+    Width = 51
+    Height = 21
+    OnClick = Image63Click
+    OnMouseDown = Image63MouseDown
+    OnMouseUp = Image63MouseUp
+  end
+  object Image64: TImage
+    Left = 936
+    Top = 136
+    Width = 51
+    Height = 21
+    OnClick = Image64Click
+    OnMouseDown = Image64MouseDown
+    OnMouseUp = Image64MouseUp
+  end
+  object Image65: TImage
+    Left = 992
+    Top = 136
+    Width = 51
+    Height = 21
+    OnClick = Image65Click
+    OnMouseDown = Image65MouseDown
+    OnMouseUp = Image65MouseUp
+  end
+  object Image66: TImage
+    Left = 768
+    Top = 160
+    Width = 51
+    Height = 21
+    OnClick = Image66Click
+    OnMouseDown = Image66MouseDown
+    OnMouseUp = Image66MouseUp
+  end
+  object Image67: TImage
+    Left = 824
+    Top = 160
+    Width = 51
+    Height = 21
+    OnClick = Image67Click
+    OnMouseDown = Image67MouseDown
+    OnMouseUp = Image67MouseUp
+  end
+  object Image68: TImage
+    Left = 880
+    Top = 160
+    Width = 51
+    Height = 21
+    OnClick = Image68Click
+    OnMouseDown = Image68MouseDown
+    OnMouseUp = Image68MouseUp
+  end
+  object Image69: TImage
+    Left = 936
+    Top = 160
+    Width = 51
+    Height = 21
+    OnClick = Image69Click
+    OnMouseDown = Image69MouseDown
+    OnMouseUp = Image69MouseUp
+  end
+  object Image70: TImage
+    Left = 992
+    Top = 160
+    Width = 51
+    Height = 21
+    OnClick = Image70Click
+    OnMouseDown = Image70MouseDown
+    OnMouseUp = Image70MouseUp
+  end
+  object Image72: TImage
+    Left = 176
+    Top = 112
+    Width = 45
+    Height = 22
+    OnMouseDown = Image72MouseDown
+    OnMouseUp = Image72MouseUp
+  end
+  object Image73: TImage
+    Left = 224
+    Top = 112
+    Width = 45
+    Height = 22
+    OnMouseDown = Image73MouseDown
+    OnMouseUp = Image73MouseUp
+  end
+  object Image74: TImage
+    Left = 22
+    Top = 152
+    Width = 120
+    Height = 120
+    OnMouseDown = Image74MouseDown
+    OnMouseMove = Image74MouseMove
+    OnMouseUp = Image74MouseUp
+  end
+  object Image75: TImage
+    Left = 162
+    Top = 152
+    Width = 120
+    Height = 120
+    OnMouseDown = Image75MouseDown
+    OnMouseMove = Image75MouseMove
+    OnMouseUp = Image75MouseUp
+  end
+  object Image76: TImage
+    Left = 302
+    Top = 152
+    Width = 120
+    Height = 120
+    OnMouseDown = Image76MouseDown
+    OnMouseMove = Image76MouseMove
+    OnMouseUp = Image76MouseUp
+  end
+  object Image77: TImage
+    Left = 24
+    Top = 272
+    Width = 19
+    Height = 29
+  end
+  object Image78: TImage
+    Left = 164
+    Top = 272
+    Width = 19
+    Height = 29
+  end
+  object Image79: TImage
+    Left = 304
+    Top = 272
+    Width = 19
+    Height = 29
+  end
+  object Shape1: TShape
+    Left = 195
+    Top = 79
+    Width = 55
+    Height = 3
+    Brush.Color = clBlack
+  end
+  object Shape2: TShape
+    Left = 195
+    Top = 27
+    Width = 55
+    Height = 3
+    Brush.Color = clBlack
+  end
+  object Shape3: TShape
+    Left = 195
+    Top = 27
+    Width = 3
+    Height = 55
+    Brush.Color = clBlack
+  end
+  object Shape4: TShape
+    Left = 247
+    Top = 27
+    Width = 3
+    Height = 55
+    Brush.Color = clBlack
+  end
+  object Button2: TButton
+    Left = 48
+    Top = 272
+    Width = 75
+    Height = 25
+    Caption = 'Czysc Ekran'
+    TabOrder = 0
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 192
+    Top = 272
+    Width = 75
+    Height = 25
+    Caption = 'Czysc Ekran'
+    TabOrder = 1
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 328
+    Top = 272
+    Width = 75
+    Height = 25
+    Caption = 'Czysc Ekran'
+    TabOrder = 2
+    OnClick = Button4Click
+  end
+  object Button1: TButton
+    Left = 456
+    Top = 280
+    Width = 75
+    Height = 25
+    Caption = 'Kasuj wzorce'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 30
+    OnTimer = Timer1Timer
+    Left = 272
+    Top = 112
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 30
+    OnTimer = Timer2Timer
+    Left = 144
+    Top = 112
+  end
+end

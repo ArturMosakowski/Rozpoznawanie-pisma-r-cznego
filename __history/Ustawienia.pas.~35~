@@ -1,0 +1,609 @@
+unit Ustawienia;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls;
+
+type
+  TForm5 = class(TForm)
+    Label1: TLabel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Label2: TLabel;
+    Image6: TImage;
+    Image7: TImage;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    Image8: TImage;
+    Image9: TImage;
+    Image10: TImage;
+    Image11: TImage;
+    Image12: TImage;
+    Image13: TImage;
+    CheckBox7: TCheckBox;
+    CheckBox8: TCheckBox;
+    CheckBox9: TCheckBox;
+    CheckBox10: TCheckBox;
+    CheckBox11: TCheckBox;
+    CheckBox12: TCheckBox;
+    Image14: TImage;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Image15: TImage;
+    Image16: TImage;
+    Image17: TImage;
+    Image18: TImage;
+    CheckBox13: TCheckBox;
+    CheckBox14: TCheckBox;
+    CheckBox15: TCheckBox;
+    Label3: TLabel;
+    Image19: TImage;
+    Image20: TImage;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
+    procedure Image10Click(Sender: TObject);
+    procedure Image11Click(Sender: TObject);
+    procedure Image12Click(Sender: TObject);
+    procedure Image13Click(Sender: TObject);
+    procedure Image15Click(Sender: TObject);
+    procedure Image16Click(Sender: TObject);
+    procedure Image17Click(Sender: TObject);
+    procedure Image19MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image19MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image19Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+  Ustawienia2 : array[0..2] of Integer;  //tablica z ustawieniami aplikacji
+implementation
+
+uses Main;
+{==============================================================================}
+{==========================  WCZYTYWANIE USTAWIEN  ============================}
+{==============================================================================}
+procedure WczytajUstawienia();
+var
+  plik   : TextFile;
+  znak   : string;  //zmienna gdzie beda wrzucane poszczegolne znaki pliku tekstowego
+  i, j   : Integer; //iteracje
+begin
+  AssignFile(plik, 'Ustawienia.txt');
+  Reset(plik);
+  while not EOF (plik) do
+  begin
+    readln(plik, znak);
+    for i:=1 to 3 do
+    begin
+      if znak<>'' then
+      begin
+        Ustawienia2[i-1]:=StrToInt(znak);
+        readln(plik, znak);
+      end;
+    end;
+  end;
+ Close(plik);
+end;
+{==============================================================================}
+{==========================  ZAPISYWANIE USTAWIEN  ============================}
+{==============================================================================}
+procedure ZapiszUstawienia();
+var
+  plik                : TextFile;
+  Nowy1, Nowy2, Nowy3 : String;
+  i, j                : Integer; //iteracje
+begin
+  AssignFile(plik, 'Ustawienia.txt');
+  Rewrite(plik);
+  WriteLn(plik,Nowy1);
+  WriteLn(plik,Nowy2);
+  WriteLn(plik,Nowy3);
+  Close(plik);
+end;
+{$R *.dfm}
+
+procedure TForm5.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Form5.Visible:=False;
+  Form1.Visible:=True;
+end;
+
+procedure TForm5.FormCreate(Sender: TObject);
+begin
+  WczytajUstawienia();
+  if Ustawienia2[0]=1 then
+  begin
+    Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_On.bmp');
+    Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+    Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+    Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+    Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+    Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+    Form5.CheckBox1.Checked:=True;
+    Form5.CheckBox2.Checked:=False;
+    Form5.CheckBox3.Checked:=False;
+    Form5.CheckBox4.Checked:=False;
+    Form5.CheckBox5.Checked:=False;
+    Form5.CheckBox6.Checked:=False;
+  end;
+  if Ustawienia2[0]=2 then
+  begin
+    Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+    Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_On.bmp');
+    Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+    Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+    Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+    Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+    Form5.CheckBox1.Checked:=False;
+    Form5.CheckBox2.Checked:=True;
+    Form5.CheckBox3.Checked:=False;
+    Form5.CheckBox4.Checked:=False;
+    Form5.CheckBox5.Checked:=False;
+    Form5.CheckBox6.Checked:=False;
+  end;
+  if Ustawienia2[0]=3 then
+  begin
+    Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+    Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+    Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_On.bmp');
+    Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+    Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+    Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+    Form5.CheckBox1.Checked:=False;
+    Form5.CheckBox2.Checked:=False;
+    Form5.CheckBox3.Checked:=True;
+    Form5.CheckBox4.Checked:=False;
+    Form5.CheckBox5.Checked:=False;
+    Form5.CheckBox6.Checked:=False;
+  end;
+  if Ustawienia2[0]=4 then
+  begin
+    Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+    Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+    Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+    Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_On.bmp');
+    Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+    Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+    Form5.CheckBox1.Checked:=False;
+    Form5.CheckBox2.Checked:=False;
+    Form5.CheckBox3.Checked:=False;
+    Form5.CheckBox4.Checked:=True;
+    Form5.CheckBox5.Checked:=False;
+    Form5.CheckBox6.Checked:=False;
+  end;
+  if Ustawienia2[0]=5 then
+  begin
+    Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+    Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+    Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+    Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+    Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_On.bmp');
+    Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+    Form5.CheckBox1.Checked:=False;
+    Form5.CheckBox2.Checked:=False;
+    Form5.CheckBox3.Checked:=False;
+    Form5.CheckBox4.Checked:=False;
+    Form5.CheckBox5.Checked:=True;
+    Form5.CheckBox6.Checked:=False;
+  end;
+  if Ustawienia2[0]=6 then
+  begin
+    Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+    Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+    Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+    Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+    Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+    Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_On.bmp');
+    Form5.CheckBox1.Checked:=False;
+    Form5.CheckBox2.Checked:=False;
+    Form5.CheckBox3.Checked:=False;
+    Form5.CheckBox4.Checked:=False;
+    Form5.CheckBox5.Checked:=False;
+    Form5.CheckBox6.Checked:=True;
+  end;
+
+  if Ustawienia2[1]=1 then
+  begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_On.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=True;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+  end;
+  if Ustawienia2[1]=2 then
+  begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_On.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=True;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+  end;
+  if Ustawienia2[1]=3 then
+  begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_On.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=True;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+  end;
+  if Ustawienia2[1]=4 then
+  begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_On.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=True;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+  end;
+  if Ustawienia2[1]=5 then
+  begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_On.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=True;
+    Form5.CheckBox12.Checked:=False;
+  end;
+  if Ustawienia2[1]=6 then
+  begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_On.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=True;
+  end;
+
+  if Ustawienia2[2]=1 then
+  begin
+    Form5.Image15.Picture.LoadFromFile('Grafiki/Opcje/Zaznaczone.bmp');
+    Form5.Image16.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+    Form5.Image17.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+    Form5.CheckBox13.Checked:=True;
+    Form5.CheckBox14.Checked:=False;
+    Form5.CheckBox15.Checked:=False;
+  end;
+  if Ustawienia2[2]=2 then
+  begin
+    Form5.Image15.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+    Form5.Image16.Picture.LoadFromFile('Grafiki/Opcje/Zaznaczone.bmp');
+    Form5.Image17.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+    Form5.CheckBox13.Checked:=False;
+    Form5.CheckBox14.Checked:=True;
+    Form5.CheckBox15.Checked:=False;
+  end;
+  if Ustawienia2[2]=3 then
+  begin
+    Form5.Image15.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+    Form5.Image16.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+    Form5.Image17.Picture.LoadFromFile('Grafiki/Opcje/Zaznaczone.bmp');
+    Form5.CheckBox13.Checked:=False;
+    Form5.CheckBox14.Checked:=False;
+    Form5.CheckBox15.Checked:=True;
+  end;
+
+  Form5.Image7.Picture.LoadFromFile('Grafiki/tlo8.bmp');
+  Form5.Image14.Picture.LoadFromFile('Grafiki/tlo8.bmp');
+  Form5.Image18.Picture.LoadFromFile('Grafiki/tlo9.bmp');
+  Form5.Image19.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Up.bmp');
+  Form5.Image20.Width:=410;
+  Form5.Image20.Height:=343;
+  Form5.Image20.Picture.LoadFromFile('Grafiki/tlo.bmp');
+end;
+
+procedure TForm5.Image10Click(Sender: TObject);
+begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_On.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=True;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+    Ustawienia2[1]:=3;
+end;
+
+procedure TForm5.Image11Click(Sender: TObject);
+begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_On.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=True;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+    Ustawienia2[1]:=4;
+end;
+
+procedure TForm5.Image12Click(Sender: TObject);
+begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_On.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=True;
+    Form5.CheckBox12.Checked:=False;
+    Ustawienia2[1]:=5;
+end;
+
+procedure TForm5.Image13Click(Sender: TObject);
+begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_On.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=True;
+    Ustawienia2[1]:=6;
+end;
+
+procedure TForm5.Image15Click(Sender: TObject);
+begin
+  Form5.Image15.Picture.LoadFromFile('Grafiki/Opcje/Zaznaczone.bmp');
+  Form5.Image16.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+  Form5.Image17.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+  Form5.CheckBox13.Checked:=True;
+  Form5.CheckBox14.Checked:=False;
+  Form5.CheckBox15.Checked:=False;
+end;
+
+procedure TForm5.Image16Click(Sender: TObject);
+begin
+  Form5.Image15.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+  Form5.Image16.Picture.LoadFromFile('Grafiki/Opcje/Zaznaczone.bmp');
+  Form5.Image17.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+  Form5.CheckBox13.Checked:=False;
+  Form5.CheckBox14.Checked:=True;
+  Form5.CheckBox15.Checked:=False;
+end;
+
+procedure TForm5.Image17Click(Sender: TObject);
+begin
+  Form5.Image15.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+  Form5.Image16.Picture.LoadFromFile('Grafiki/Opcje/Odznaczone.bmp');
+  Form5.Image17.Picture.LoadFromFile('Grafiki/Opcje/Zaznaczone.bmp');
+  Form5.CheckBox13.Checked:=False;
+  Form5.CheckBox14.Checked:=False;
+  Form5.CheckBox15.Checked:=True;
+end;
+
+procedure TForm5.Image19Click(Sender: TObject);
+begin
+  Form5.Visible:=False;
+  Form1.Visible:=True;
+end;
+
+procedure TForm5.Image19MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Form5.Image19.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Down.bmp');
+end;
+
+procedure TForm5.Image19MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Form5.Image19.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Up.bmp');
+end;
+
+procedure TForm5.Image1Click(Sender: TObject);
+begin
+  Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_On.bmp');
+  Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+  Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+  Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+  Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+  Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+  Form5.CheckBox1.Checked:=True;
+  Form5.CheckBox2.Checked:=False;
+  Form5.CheckBox3.Checked:=False;
+  Form5.CheckBox4.Checked:=False;
+  Form5.CheckBox5.Checked:=False;
+  Form5.CheckBox6.Checked:=False;
+  Ustawienia2[0]:=1;
+end;
+
+procedure TForm5.Image2Click(Sender: TObject);
+begin
+  Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+  Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_On.bmp');
+  Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+  Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+  Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+  Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+  Form5.CheckBox1.Checked:=False;
+  Form5.CheckBox2.Checked:=True;
+  Form5.CheckBox3.Checked:=False;
+  Form5.CheckBox4.Checked:=False;
+  Form5.CheckBox5.Checked:=False;
+  Form5.CheckBox6.Checked:=False;
+  Ustawienia2[0]:=2;
+end;
+
+procedure TForm5.Image3Click(Sender: TObject);
+begin
+  Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+  Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+  Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_On.bmp');
+  Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+  Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+  Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+  Form5.CheckBox1.Checked:=False;
+  Form5.CheckBox2.Checked:=False;
+  Form5.CheckBox3.Checked:=True;
+  Form5.CheckBox4.Checked:=False;
+  Form5.CheckBox5.Checked:=False;
+  Form5.CheckBox6.Checked:=False;
+  Ustawienia2[0]:=3;
+end;
+
+procedure TForm5.Image4Click(Sender: TObject);
+begin
+  Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+  Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+  Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+  Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_On.bmp');
+  Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+  Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+  Form5.CheckBox1.Checked:=False;
+  Form5.CheckBox2.Checked:=False;
+  Form5.CheckBox3.Checked:=False;
+  Form5.CheckBox4.Checked:=True;
+  Form5.CheckBox5.Checked:=False;
+  Form5.CheckBox6.Checked:=False;
+  Ustawienia2[0]:=4;
+end;
+
+procedure TForm5.Image5Click(Sender: TObject);
+begin
+  Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+  Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+  Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+  Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+  Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_On.bmp');
+  Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_Off.bmp');
+  Form5.CheckBox1.Checked:=False;
+  Form5.CheckBox2.Checked:=False;
+  Form5.CheckBox3.Checked:=False;
+  Form5.CheckBox4.Checked:=False;
+  Form5.CheckBox5.Checked:=True;
+  Form5.CheckBox6.Checked:=False;
+  Ustawienia2[0]:=5;
+end;
+
+procedure TForm5.Image6Click(Sender: TObject);
+begin
+  Form5.Image1.Picture.LoadFromFile('Grafiki/Opcje/Kolor1_Off.bmp');
+  Form5.Image2.Picture.LoadFromFile('Grafiki/Opcje/Kolor2_Off.bmp');
+  Form5.Image3.Picture.LoadFromFile('Grafiki/Opcje/Kolor3_Off.bmp');
+  Form5.Image4.Picture.LoadFromFile('Grafiki/Opcje/Kolor4_Off.bmp');
+  Form5.Image5.Picture.LoadFromFile('Grafiki/Opcje/Kolor5_Off.bmp');
+  Form5.Image6.Picture.LoadFromFile('Grafiki/Opcje/Kolor6_On.bmp');
+  Form5.CheckBox1.Checked:=False;
+  Form5.CheckBox2.Checked:=False;
+  Form5.CheckBox3.Checked:=False;
+  Form5.CheckBox4.Checked:=False;
+  Form5.CheckBox5.Checked:=False;
+  Form5.CheckBox6.Checked:=True;
+  Ustawienia2[0]:=6;
+end;
+
+procedure TForm5.Image8Click(Sender: TObject);
+begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_On.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_Off.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=True;
+    Form5.CheckBox8.Checked:=False;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+    Ustawienia2[1]:=1;
+end;
+
+procedure TForm5.Image9Click(Sender: TObject);
+begin
+    Form5.Image8.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt1_Off.bmp');
+    Form5.Image9.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt2_On.bmp');
+    Form5.Image10.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt3_Off.bmp');
+    Form5.Image11.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt4_Off.bmp');
+    Form5.Image12.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt5_Off.bmp');
+    Form5.Image13.Picture.LoadFromFile('Grafiki/Opcje/Ksztalt6_Off.bmp');
+    Form5.CheckBox7.Checked:=False;
+    Form5.CheckBox8.Checked:=True;
+    Form5.CheckBox9.Checked:=False;
+    Form5.CheckBox10.Checked:=False;
+    Form5.CheckBox11.Checked:=False;
+    Form5.CheckBox12.Checked:=False;
+    Ustawienia2[1]:=2;
+end;
+
+end.

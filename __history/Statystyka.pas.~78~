@@ -1,0 +1,479 @@
+unit Statystyka;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, StrUtils, Math, Menus;
+
+type
+  TForm4 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    Image9: TImage;
+    Image10: TImage;
+    Image11: TImage;
+    Image12: TImage;
+    Image13: TImage;
+    Image14: TImage;
+    Image15: TImage;
+    Image16: TImage;
+    Image17: TImage;
+    Image18: TImage;
+    Image19: TImage;
+    Image20: TImage;
+    Image21: TImage;
+    Image22: TImage;
+    Image23: TImage;
+    Image24: TImage;
+    Image25: TImage;
+    Image26: TImage;
+    Image27: TImage;
+    Image28: TImage;
+    Image29: TImage;
+    Image30: TImage;
+    Image31: TImage;
+    Image32: TImage;
+    Image33: TImage;
+    Image34: TImage;
+    Image35: TImage;
+    Image36: TImage;
+    Image37: TImage;
+    Label39: TLabel;
+    Label40: TLabel;
+    Label41: TLabel;
+    Label42: TLabel;
+    Label43: TLabel;
+    Label44: TLabel;
+    Label45: TLabel;
+    Label46: TLabel;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
+    Label50: TLabel;
+    Label51: TLabel;
+    Label52: TLabel;
+    Label53: TLabel;
+    Label54: TLabel;
+    Label55: TLabel;
+    Label56: TLabel;
+    Label57: TLabel;
+    Label58: TLabel;
+    Label59: TLabel;
+    Label60: TLabel;
+    Label61: TLabel;
+    Label62: TLabel;
+    Label63: TLabel;
+    Label64: TLabel;
+    Label65: TLabel;
+    Label66: TLabel;
+    Label67: TLabel;
+    Label68: TLabel;
+    Label69: TLabel;
+    Label70: TLabel;
+    Label71: TLabel;
+    Label72: TLabel;
+    Label73: TLabel;
+    Image38: TImage;
+    Label36: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Label74: TLabel;
+    Image39: TImage;
+    Image40: TImage;
+    Image41: TImage;
+    Image42: TImage;
+    Image43: TImage;
+    Image44: TImage;
+    Image45: TImage;
+    Image46: TImage;
+    Image47: TImage;
+    Image48: TImage;
+    Image49: TImage;
+    Image50: TImage;
+    Image51: TImage;
+    Image52: TImage;
+    Image53: TImage;
+    Image54: TImage;
+    Image55: TImage;
+    Image56: TImage;
+    Image57: TImage;
+    Image58: TImage;
+    Image59: TImage;
+    Image60: TImage;
+    Image61: TImage;
+    Image62: TImage;
+    Image63: TImage;
+    Image64: TImage;
+    Image65: TImage;
+    Image66: TImage;
+    Image67: TImage;
+    Image68: TImage;
+    Image69: TImage;
+    Image70: TImage;
+    Image71: TImage;
+    Image72: TImage;
+    Image73: TImage;
+    Image74: TImage;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure Image39MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image39MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image39Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4    : TForm4;
+  Staty    : array[0..34] of Integer;
+  Procenty : array[0..34] of Integer;
+implementation
+
+uses Main;
+{==============================================================================}
+{===================  WCZYTYWANIE DANYCH STATYSTYCZNYCH  ======================}
+{==============================================================================}
+procedure WczytajStatystyke();
+var
+  plik   : TextFile;
+  znak   : string;  //zmienna gdzie beda wrzucane poszczegolne znaki pliku tekstowego
+  i, j   : Integer; //iteracje
+begin
+  AssignFile(plik, 'Statystyka.txt');
+  Reset(plik);
+  while not EOF (plik) do
+  begin
+    readln(plik, znak);
+    for i:=1 to 35 do
+    begin
+      if znak<>'' then
+      begin
+        Staty[i-1]:=StrToInt(znak);
+        readln(plik, znak);
+      end;
+    end;
+  end;
+ Close(plik);
+end;
+{==============================================================================}
+{========  OBLICZANIE PROCENTOWEGO ROZPOZNANIA POSZCZEGOLNYCH ZNAKOW  =========}
+{==============================================================================}
+procedure ObliczProcenty();
+var
+  i, Suma, PProc : Integer;
+begin
+  Suma:=0;
+  for i:=0 to 34 do
+  begin
+    Suma:=Suma+Staty[i];
+  end;
+  PProc:=Suma div 100;
+  for i:=0 to 34 do Procenty[i]:=Staty[i] div PProc;
+
+  Form4.Image1.Left:=Form4.Image1.Left+Procenty[0]*3;
+  Form4.Image2.Left:=Form4.Image2.Left+Procenty[1]*3;
+  Form4.Image3.Left:=Form4.Image3.Left+Procenty[2]*3;
+  Form4.Image4.Left:=Form4.Image4.Left+Procenty[3]*3;
+  Form4.Image5.Left:=Form4.Image5.Left+Procenty[4]*3;
+  Form4.Image6.Left:=Form4.Image6.Left+Procenty[5]*3;
+  Form4.Image7.Left:=Form4.Image7.Left+Procenty[6]*3;
+  Form4.Image8.Left:=Form4.Image8.Left+Procenty[7]*3;
+  Form4.Image9.Left:=Form4.Image9.Left+Procenty[8]*3;
+  Form4.Image10.Left:=Form4.Image10.Left+Procenty[9]*3;
+  Form4.Image11.Left:=Form4.Image11.Left+Procenty[10]*3;
+  Form4.Image12.Left:=Form4.Image12.Left+Procenty[11]*3;
+  Form4.Image13.Left:=Form4.Image13.Left+Procenty[12]*3;
+  Form4.Image14.Left:=Form4.Image14.Left+Procenty[13]*3;
+  Form4.Image15.Left:=Form4.Image15.Left+Procenty[14]*3;
+  Form4.Image16.Left:=Form4.Image16.Left+Procenty[15]*3;
+  Form4.Image17.Left:=Form4.Image17.Left+Procenty[16]*3;
+  Form4.Image18.Left:=Form4.Image18.Left+Procenty[17]*3;
+  Form4.Image19.Left:=Form4.Image19.Left+Procenty[18]*3;
+  Form4.Image20.Left:=Form4.Image20.Left+Procenty[19]*3;
+  Form4.Image21.Left:=Form4.Image21.Left+Procenty[20]*3;
+  Form4.Image22.Left:=Form4.Image22.Left+Procenty[21]*3;
+  Form4.Image23.Left:=Form4.Image23.Left+Procenty[22]*3;
+  Form4.Image24.Left:=Form4.Image24.Left+Procenty[23]*3;
+  Form4.Image25.Left:=Form4.Image25.Left+Procenty[24]*3;
+  Form4.Image26.Left:=Form4.Image26.Left+Procenty[25]*3;
+  Form4.Image27.Left:=Form4.Image27.Left+Procenty[26]*3;
+  Form4.Image28.Left:=Form4.Image28.Left+Procenty[27]*3;
+  Form4.Image29.Left:=Form4.Image29.Left+Procenty[28]*3;
+  Form4.Image30.Left:=Form4.Image30.Left+Procenty[29]*3;
+  Form4.Image31.Left:=Form4.Image31.Left+Procenty[30]*3;
+  Form4.Image32.Left:=Form4.Image32.Left+Procenty[31]*3;
+  Form4.Image33.Left:=Form4.Image33.Left+Procenty[32]*3;
+  Form4.Image34.Left:=Form4.Image34.Left+Procenty[33]*3;
+  Form4.Image35.Left:=Form4.Image35.Left+Procenty[34]*3;
+
+
+  Form4.Label39.Left:=50+Procenty[0]*3;
+  Form4.Label39.Caption:=IntToStr(Procenty[0])+'%'+' ('+IntToStr(Staty[0])+')';
+  Form4.Label40.Left:=50+Procenty[1]*3;
+  Form4.Label40.Caption:=IntToStr(Procenty[1])+'%'+' ('+IntToStr(Staty[1])+')';
+  Form4.Label41.Left:=50+Procenty[2]*3;
+  Form4.Label41.Caption:=IntToStr(Procenty[2])+'%'+' ('+IntToStr(Staty[2])+')';
+  Form4.Label42.Left:=50+Procenty[3]*3;
+  Form4.Label42.Caption:=IntToStr(Procenty[3])+'%'+' ('+IntToStr(Staty[3])+')';
+  Form4.Label43.Left:=50+Procenty[4]*3;
+  Form4.Label43.Caption:=IntToStr(Procenty[4])+'%'+' ('+IntToStr(Staty[4])+')';
+  Form4.Label44.Left:=50+Procenty[5]*3;
+  Form4.Label44.Caption:=IntToStr(Procenty[5])+'%'+' ('+IntToStr(Staty[5])+')';
+  Form4.Label45.Left:=50+Procenty[6]*3;
+  Form4.Label45.Caption:=IntToStr(Procenty[6])+'%'+' ('+IntToStr(Staty[6])+')';
+  Form4.Label46.Left:=50+Procenty[7]*3;
+  Form4.Label46.Caption:=IntToStr(Procenty[7])+'%'+' ('+IntToStr(Staty[7])+')';
+  Form4.Label47.Left:=50+Procenty[8]*3;
+  Form4.Label47.Caption:=IntToStr(Procenty[8])+'%'+' ('+IntToStr(Staty[8])+')';
+  Form4.Label48.Left:=50+Procenty[9]*3;
+  Form4.Label48.Caption:=IntToStr(Procenty[9])+'%'+' ('+IntToStr(Staty[9])+')';
+  Form4.Label49.Left:=50+Procenty[10]*3;
+  Form4.Label49.Caption:=IntToStr(Procenty[10])+'%'+' ('+IntToStr(Staty[10])+')';
+  Form4.Label50.Left:=50+Procenty[11]*3;
+  Form4.Label50.Caption:=IntToStr(Procenty[11])+'%'+' ('+IntToStr(Staty[11])+')';
+  Form4.Label51.Left:=50+Procenty[12]*3;
+  Form4.Label51.Caption:=IntToStr(Procenty[12])+'%'+' ('+IntToStr(Staty[12])+')';
+  Form4.Label52.Left:=50+Procenty[13]*3;
+  Form4.Label52.Caption:=IntToStr(Procenty[13])+'%'+' ('+IntToStr(Staty[13])+')';
+  Form4.Label53.Left:=50+Procenty[14]*3;
+  Form4.Label53.Caption:=IntToStr(Procenty[14])+'%'+' ('+IntToStr(Staty[14])+')';
+  Form4.Label54.Left:=50+Procenty[15]*3;
+  Form4.Label54.Caption:=IntToStr(Procenty[15])+'%'+' ('+IntToStr(Staty[15])+')';
+  Form4.Label55.Left:=50+Procenty[16]*3;
+  Form4.Label55.Caption:=IntToStr(Procenty[16])+'%'+' ('+IntToStr(Staty[16])+')';
+  Form4.Label56.Left:=50+Procenty[17]*3;
+  Form4.Label56.Caption:=IntToStr(Procenty[17])+'%'+' ('+IntToStr(Staty[17])+')';
+  Form4.Label57.Left:=50+Procenty[18]*3;
+  Form4.Label57.Caption:=IntToStr(Procenty[18])+'%'+' ('+IntToStr(Staty[18])+')';
+  Form4.Label58.Left:=50+Procenty[19]*3;
+  Form4.Label58.Caption:=IntToStr(Procenty[19])+'%'+' ('+IntToStr(Staty[19])+')';
+  Form4.Label59.Left:=50+Procenty[20]*3;
+  Form4.Label59.Caption:=IntToStr(Procenty[20])+'%'+' ('+IntToStr(Staty[20])+')';
+  Form4.Label60.Left:=50+Procenty[21]*3;
+  Form4.Label60.Caption:=IntToStr(Procenty[21])+'%'+' ('+IntToStr(Staty[21])+')';
+  Form4.Label61.Left:=50+Procenty[22]*3;
+  Form4.Label61.Caption:=IntToStr(Procenty[22])+'%'+' ('+IntToStr(Staty[22])+')';
+  Form4.Label62.Left:=50+Procenty[23]*3;
+  Form4.Label62.Caption:=IntToStr(Procenty[23])+'%'+' ('+IntToStr(Staty[23])+')';
+  Form4.Label63.Left:=50+Procenty[24]*3;
+  Form4.Label63.Caption:=IntToStr(Procenty[24])+'%'+' ('+IntToStr(Staty[24])+')';
+  Form4.Label64.Left:=50+Procenty[25]*3;
+  Form4.Label64.Caption:=IntToStr(Procenty[25])+'%'+' ('+IntToStr(Staty[25])+')';
+  Form4.Label65.Left:=50+Procenty[26]*3;
+  Form4.Label65.Caption:=IntToStr(Procenty[26])+'%'+' ('+IntToStr(Staty[26])+')';
+  Form4.Label66.Left:=50+Procenty[27]*3;
+  Form4.Label66.Caption:=IntToStr(Procenty[27])+'%'+' ('+IntToStr(Staty[27])+')';
+  Form4.Label67.Left:=50+Procenty[28]*3;
+  Form4.Label67.Caption:=IntToStr(Procenty[28])+'%'+' ('+IntToStr(Staty[28])+')';
+  Form4.Label68.Left:=50+Procenty[29]*3;
+  Form4.Label68.Caption:=IntToStr(Procenty[29])+'%'+' ('+IntToStr(Staty[29])+')';
+  Form4.Label69.Left:=50+Procenty[30]*3;
+  Form4.Label69.Caption:=IntToStr(Procenty[30])+'%'+' ('+IntToStr(Staty[30])+')';
+  Form4.Label70.Left:=50+Procenty[31]*3;
+  Form4.Label70.Caption:=IntToStr(Procenty[31])+'%'+' ('+IntToStr(Staty[31])+')';
+  Form4.Label71.Left:=50+Procenty[32]*3;
+  Form4.Label71.Caption:=IntToStr(Procenty[32])+'%'+' ('+IntToStr(Staty[32])+')';
+  Form4.Label72.Left:=50+Procenty[33]*3;
+  Form4.Label72.Caption:=IntToStr(Procenty[33])+'%'+' ('+IntToStr(Staty[33])+')';
+  Form4.Label73.Left:=50+Procenty[34]*3;
+  Form4.Label73.Caption:=IntToStr(Procenty[34])+'%'+' ('+IntToStr(Staty[34])+')';
+end;
+{==============================================================================}
+{==================  USTAWIANIE PASKOW W POZYCJI POCZATKOWEJ  =================}
+{==============================================================================}
+procedure UstawPaski();
+begin
+  Form4.Image1.Left:=-250;
+  Form4.Image2.Left:=-250;
+  Form4.Image3.Left:=-250;
+  Form4.Image4.Left:=-250;
+  Form4.Image5.Left:=-250;
+  Form4.Image6.Left:=-250;
+  Form4.Image7.Left:=-250;
+  Form4.Image8.Left:=-250;
+  Form4.Image9.Left:=-250;
+  Form4.Image10.Left:=-250;
+  Form4.Image11.Left:=-250;
+  Form4.Image12.Left:=-250;
+  Form4.Image13.Left:=-250;
+  Form4.Image14.Left:=-250;
+  Form4.Image15.Left:=-250;
+  Form4.Image16.Left:=-250;
+  Form4.Image17.Left:=-250;
+  Form4.Image18.Left:=-250;
+  Form4.Image19.Left:=-250;
+  Form4.Image20.Left:=-250;
+  Form4.Image21.Left:=-250;
+  Form4.Image22.Left:=-250;
+  Form4.Image23.Left:=-250;
+  Form4.Image24.Left:=-250;
+  Form4.Image25.Left:=-250;
+  Form4.Image26.Left:=-250;
+  Form4.Image27.Left:=-250;
+  Form4.Image28.Left:=-250;
+  Form4.Image29.Left:=-250;
+  Form4.Image30.Left:=-250;
+  Form4.Image31.Left:=-250;
+  Form4.Image32.Left:=-250;
+  Form4.Image33.Left:=-250;
+  Form4.Image34.Left:=-250;
+  Form4.Image35.Left:=-250;
+end;
+{$R *.dfm}
+
+procedure TForm4.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Form4.Visible:=False;
+  Form1.Visible:=True;
+end;
+
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+  Form4.Image1.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image2.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image3.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image4.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image5.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image6.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image7.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image8.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image9.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image10.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image11.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image12.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image13.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image14.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image15.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image16.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image17.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image18.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image19.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image20.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image21.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image22.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image23.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image24.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image25.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image26.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image27.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image28.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image29.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image30.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image31.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image32.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image33.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image34.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image35.Picture.LoadFromFile('Grafiki/Pasek.bmp');
+  Form4.Image36.Width:=500;
+  Form4.Image36.Height:=690;
+  Form4.Image36.Picture.LoadFromFile('Grafiki/tlo5.bmp');
+  Form4.Image37.Width:=50;
+  Form4.Image37.Height:=610;
+  Form4.Image37.Picture.LoadFromFile('Grafiki/tlo6.bmp');
+  UstawPaski();
+  Form4.Image38.Picture.LoadFromFile('Grafiki/tlo7.bmp');
+  WczytajStatystyke();
+  ObliczProcenty();
+  Form4.Image39.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Up.bmp');
+  Form4.Image40.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image41.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image42.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image43.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image44.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image45.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image46.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image47.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image48.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image49.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image50.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image51.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image52.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image53.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image54.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image55.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image56.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image57.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image58.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image59.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image60.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image61.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image62.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image63.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image64.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image65.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image66.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image67.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image68.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image69.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image70.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image71.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image72.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image73.Picture.LoadFromFile('Grafiki/P.bmp');
+  Form4.Image74.Picture.LoadFromFile('Grafiki/P.bmp');
+end;
+
+procedure TForm4.Image39Click(Sender: TObject);
+begin
+  Form4.Visible:=False;
+  Form1.Visible:=True;
+end;
+
+procedure TForm4.Image39MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Form4.Image39.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Down.bmp');
+end;
+
+procedure TForm4.Image39MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Form4.Image39.Picture.LoadFromFile('Grafiki/Buttons/Zamknij_Up.bmp');
+end;
+
+end.
